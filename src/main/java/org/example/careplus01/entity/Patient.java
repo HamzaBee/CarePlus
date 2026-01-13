@@ -1,0 +1,44 @@
+package org.example.careplus01.entity;
+
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.example.careplus01.enums.Gender;
+
+import java.time.LocalDate;
+import java.util.List;
+import java.util.UUID;
+
+@Entity
+@Table(name = "patients")
+@Data @NoArgsConstructor
+@AllArgsConstructor
+public class Patient {
+    @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID id;
+    @Column(length = 50)
+    private String firstName;
+    @Column(length = 50)
+    private String lastName;
+    @Column(length = 20)
+    private String phoneNumber;
+    @Enumerated(EnumType.STRING)
+    @Column(length = 10)
+    private Gender gender;
+    private String country;
+    private String city;
+    private String address;
+    @Column(nullable = false)
+    private LocalDate dateOfBirth;
+    private String state;
+    @Column(unique = true)
+    private String insuranceNumber;
+    @Column(nullable = false)
+    private boolean active;
+    @OneToMany(mappedBy = "patient")
+    @OrderBy("date DESC")
+    private List<Appointment> appointments;
+
+}
