@@ -20,11 +20,12 @@ public class Appointment {
     private Long id;
     @Column(nullable = false)
     private LocalDateTime date;
+    @Enumerated(EnumType.STRING)
     private TypeAppointment typeAppointment;
     @Enumerated(EnumType.STRING)
     private StatusAPT status;
     @ManyToOne
-        @JoinColumn(name = "patient_id", nullable = false)
-        private Patient patient;
+    @JoinColumn(name = "patient_id", nullable = false)
+    private Patient patient;
 }
 
