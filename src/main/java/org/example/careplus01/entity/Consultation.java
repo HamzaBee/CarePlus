@@ -24,7 +24,9 @@ public class Consultation {
     private LocalDateTime actualStartTime;
     private String treatment;
     private BigDecimal fee;
-    private Boolean paid = false;
-    @OneToOne(mappedBy = "consultation")
+    @Column(nullable = false)
+    private boolean paid = false;
+    @OneToOne
+    @JoinColumn(name = "appointment_id", referencedColumnName = "id", nullable = false, unique = true)
     private Appointment appointment;
 }

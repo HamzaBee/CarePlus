@@ -27,5 +27,9 @@ public class Appointment {
     @ManyToOne
     @JoinColumn(name = "patient_id", nullable = false)
     private Patient patient;
+    @OneToOne(mappedBy = "appointment",
+            cascade = {CascadeType.PERSIST, CascadeType.REMOVE},
+            orphanRemoval = true)
+    private Consultation consultation;
 }
 
