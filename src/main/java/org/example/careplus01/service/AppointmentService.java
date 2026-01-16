@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.UUID;
 
 public interface AppointmentService {
-    AppointmentDTO createAppointment(AppointmentDTO appointmentDTO);
+    AppointmentDTO createAppointment(AppointmentDTO dto);
     List<AppointmentDTO> getAllAppointments();
     AppointmentDTO getAppointmentById(Long id);
     AppointmentDTO updateStatus(Long id, StatusAPT newStatus);
@@ -18,4 +18,5 @@ public interface AppointmentService {
     List<AppointmentDTO> getAppointmentsByPatientId(UUID patientId);
     List<AppointmentDTO> getAppointmentsByStatus(StatusAPT status);
     List<AppointmentDTO> getAppointmentsByType(TypeAppointment typeAppointment);
+    AppointmentDTO updateAppointment(Long id, AppointmentDTO dto);
 }
