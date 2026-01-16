@@ -1,6 +1,7 @@
 package org.example.careplus01.DTO;
 
 import jakarta.validation.constraints.DecimalMin;
+import jakarta.validation.constraints.Digits;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
@@ -24,6 +25,7 @@ public class ConsultationDTO {
     private String treatment;
     @NotNull(message = "Fee is required")
     @DecimalMin(value = "0.0", message = "Fee must be positive")
+    @Digits(integer = 8, fraction = 4)
     private BigDecimal fee;
     private boolean paid;
     @NotNull(message = "Appointment ID is required")
