@@ -21,6 +21,7 @@ import java.util.UUID;
 public class AppointmentController {
     private final AppointmentService appointmentService;
     @PostMapping
+
     public ResponseEntity<AppointmentDTO> createAppointment(@RequestBody @Valid AppointmentDTO dto) {
         AppointmentDTO savedAppointment = appointmentService.createAppointment(dto);
         return ResponseEntity.status(HttpStatus.CREATED).body(savedAppointment);
