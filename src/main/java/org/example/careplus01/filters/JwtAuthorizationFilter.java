@@ -25,6 +25,32 @@ public class JwtAuthorizationFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response,
                                     FilterChain filterChain) throws ServletException, IOException {
 
+        //start
+
+        String path = request.getServletPath();
+
+        // Skip JWT validation for Thymeleaf pages and public endpoints
+        if (path.equals("/login-page") ||
+                path.equals("/admin-dashboard") ||
+                path.equals("/dashboard") ||
+                path.equals("/") ||
+                path.equals("/refreshToken") ||
+                path.startsWith("/css") ||
+                path.startsWith("/js") ||
+                path.startsWith("/images") ||
+                path.startsWith("/static") ||
+                path.startsWith("/h2-console")) {
+            filterChain.doFilter(request, response);
+            return;
+        }
+
+
+        //end
+
+
+
+
+
         // skipping jwt validation for refreshing the token
         if (request.getServletPath().equals("/refreshToken")) {
             filterChain.doFilter(request, response);
@@ -81,5 +107,10 @@ public class JwtAuthorizationFilter extends OncePerRequestFilter {
 
             filterChain.doFilter(request, response);
         }
+
     }
-}
+    }
+
+
+
+

@@ -9,6 +9,6 @@ public class JwtUtil {
     public static final String SECRET = "MySecureSecretKeyForJWTSigningCarePlusApplication2024!@#$";
     public static final String TOKEN_PREFIX = "Bearer ";
     public static final String HEADER_STRING = "Authorization";
-    public static final Long EXPIRES_ACCESS_TOKEN = 2 * 60 * 1000L;
-    public static final Long EXPIRES_REFRESH_TOKEN = 15 * 60 * 1000L;
+    public static final Long EXPIRES_ACCESS_TOKEN  = 15 * 60 * 1000L;          // 15 minutes
+    public static final Long EXPIRES_REFRESH_TOKEN = 7 * 24 * 60 * 60 * 1000L; // 7 days
 }

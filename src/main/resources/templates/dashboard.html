@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CarePlus | Dashboard</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body class="dashboard-body">
+
+<nav class="navbar">
+    <div class="logo-container-nav">
+        <h2>CarePlus<span class="dot">.</span></h2>
+    </div>
+    <button id="logoutBtn" class="secondary-btn">Logout</button>
+</nav>
+
+<main class="dashboard-container">
+    <div class="dashboard-header">
+        <h2>Patient Directory</h2>
+        <button class="primary-btn small-btn" id="addPatientBtn">+ New Patient</button>
+    </div>
+
+    <div class="table-container">
+        <table class="patient-table">
+            <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Gender</th>
+                <th>Phone Number</th>
+                <th>Insurance No.</th>
+            </tr>
+            </thead>
+            <tbody id="patientTableBody">
+            </tbody>
+        </table>
+        <div id="loadingMessage" class="loading-message" style="display: none;">Loading patients...</div>
+        <div id="errorMessageDashboard" class="error-message" style="display: none;"></div>
+    </div>
+</main>
+
+<div id="patientModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3>Add New Patient</h3>
+            <span class="close-btn" id="closeModalBtn">&times;</span>
+        </div>
+
+        <form id="newPatientForm">
+            <div class="form-grid">
+                <div class="input-group">
+                    <label for="firstName">First Name *</label>
+                    <input type="text" id="firstName" required minlength="2" maxlength="50">
+                </div>
+                <div class="input-group">
+                    <label for="lastName">Last Name *</label>
+                    <input type="text" id="lastName" required minlength="2" maxlength="50">
+                </div>
+                <div class="input-group">
+                    <label for="dateOfBirth">Date of Birth *</label>
+                    <input type="date" id="dateOfBirth" required>
+                </div>
+                <div class="input-group">
+                    <label for="gender">Gender *</label>
+                    <select id="gender" required>
+                        <option value="" disabled selected>Select Gender</option>
+                        <option value="MALE">Male</option>
+                        <option value="FEMALE">Female</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label for="phoneNumber">Phone Number</label>
+                    <input type="text" id="phoneNumber" placeholder="+212...">
+                </div>
+                <div class="input-group">
+                    <label for="insuranceNumber">Insurance Number *</label>
+                    <input type="text" id="insuranceNumber" required>
+                </div>
+                <div class="input-group">
+                    <label for="address">Address</label>
+                    <input type="text" id="address">
+                </div>
+                <div class="input-group">
+                    <label for="city">City</label>
+                    <input type="text" id="city" value="Casablanca">
+                </div>
+                <div class="input-group">
+                    <label for="state">State/Region</label>
+                    <input type="text" id="state" value="Casa-Settat">
+                </div>
+                <div class="input-group">
+                    <label for="country">Country</label>
+                    <input type="text" id="country" value="Maroc">
+                </div>
+            </div>
+
+            <div id="modalError" class="error-message" style="display: none;"></div>
+
+            <div class="modal-footer">
+                <button type="button" class="secondary-btn" id="cancelBtn">Cancel</button>
+                <button type="submit" class="primary-btn small-btn">Save Patient</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="/app.js"></script>
+</body>
+</html>
