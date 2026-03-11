@@ -1,9 +1,7 @@
 package org.example.careplus01.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.example.careplus01.enums.Gender;
 
 import java.time.LocalDate;
@@ -12,7 +10,9 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "patients")
-@Data @NoArgsConstructor
+@Getter
+@Setter
+@NoArgsConstructor
 @AllArgsConstructor
 public class Patient {
     @Id
@@ -37,7 +37,7 @@ public class Patient {
     private String insuranceNumber;
     @Column(nullable = false)
     private boolean active;
-    @OneToMany(mappedBy = "patient")
+    @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL,orphanRemoval = true)
     @OrderBy("date DESC")
     private List<Appointment> appointments;
 

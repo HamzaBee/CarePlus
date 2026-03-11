@@ -14,7 +14,7 @@ import org.example.careplus01.exception.ExpiredRefreshTokenException;
 import org.example.careplus01.exception.InvalidRefreshTokenException;
 import org.example.careplus01.exception.ResourceNotFoundException;
 import org.example.careplus01.service.UserAccountService;
-import org.example.careplus01.serviceImpl.UserAccountServiceImpl;
+import org.example.careplus01.service.serviceImpl.UserAccountServiceImpl;
 import org.example.careplus01.util.JwtUtil;
 import org.example.careplus01.util.UserAndRoleBuilder;
 import org.springframework.http.ResponseEntity;

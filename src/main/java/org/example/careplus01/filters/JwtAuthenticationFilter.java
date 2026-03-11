@@ -36,7 +36,7 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
     public Authentication attemptAuthentication(HttpServletRequest request,
                                                 HttpServletResponse response) throws AuthenticationException {
 
-        System.out.println("log in attempt");
+        System.out.println("login attempt");
         System.out.println("Method: " + request.getMethod());
         System.out.println("Content-Type: " + request.getContentType());
 
