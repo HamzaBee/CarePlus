@@ -29,7 +29,7 @@ public class PatientDTO {
     @NotNull(message = "Gender is required")
     private Gender gender;
 
-    @Size(min = 2, max = 50)
+    @Size(min = 2, max = 255)
     private String address;
 
     private String country;

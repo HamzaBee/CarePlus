@@ -1,7 +1,7 @@
 package org.example.careplus01.security;
 
 import org.example.careplus01.entity.AppUser;
-import org.example.careplus01.service.UserAccountService;
+import org.example.careplus01.serviceImpl.UserAccountServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.core.GrantedAuthority;
@@ -17,11 +17,12 @@ import java.util.stream.Collectors;
 public class UserDetailsServiceConfig {
 
     @Bean
-    public UserDetailsService userDetailsService(UserAccountService userAccountService) {
+    public UserDetailsService userDetailsService(UserAccountServiceImpl userAccountService) {
         return username -> {
             System.out.println("=== Loading User: " + username + " ===");
 
-            AppUser appUser = userAccountService.loadUserByUsername(username);
+            // Use entity method for authentication
+            AppUser appUser = userAccountService.loadUserEntityByUsername(username);
 
             if (appUser == null) {
                 System.out.println("User not found: " + username);

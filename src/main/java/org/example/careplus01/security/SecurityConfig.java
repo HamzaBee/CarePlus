@@ -32,10 +32,32 @@ public class SecurityConfig {
                 .sessionManagement(session -> session
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS) // no session auth needed working with stateless auth only
                 )
+//                .authorizeHttpRequests(auth -> auth
+//                        .requestMatchers("/login", "/h2-console/**", "/refreshToken").permitAll() //  setting these urls publicly accessible ( no auth needed)
+//                        .anyRequest().authenticated()
+//                )
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/login", "/h2-console/**", "/refreshToken").permitAll() //  setting these urls publicly accessible ( no auth needed)
+                        // Public routes - Thymeleaf view controllers
+                        .requestMatchers("/", "/login-page", "/dashboard").permitAll()
+
+                        // Public routes - Authentication
+                        .requestMatchers("/login", "/refreshToken").permitAll()
+
+                        // Public routes - H2 Console
+                        .requestMatchers("/h2-console/**").permitAll()
+
+                        // Public routes - Static resources (Fixed to match your root files)
+                        .requestMatchers("/*.css", "/*.js", "/images/**", "/favicon.ico").permitAll()
+
+                        // Explicitly Protect API routes
+                        .requestMatchers("/api/patients/**").authenticated()
+                        .requestMatchers("/users/**", "/roles/**", "/add-users", "/add-roles", "/add-role-to-user").authenticated()
+                        .requestMatchers("/profile", "/admin/**").authenticated()
+
+                        // Default MUST be authenticated for safety
                         .anyRequest().authenticated()
                 )
+                //end
                 .headers(headers -> headers
                         .frameOptions(frameOptions -> frameOptions.sameOrigin()) //
                 )
