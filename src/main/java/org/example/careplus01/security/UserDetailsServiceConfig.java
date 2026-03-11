@@ -1,7 +1,7 @@
 package org.example.careplus01.security;
 
 import org.example.careplus01.entity.AppUser;
-import org.example.careplus01.serviceImpl.UserAccountServiceImpl;
+import org.example.careplus01.service.serviceImpl.UserAccountServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.core.GrantedAuthority;

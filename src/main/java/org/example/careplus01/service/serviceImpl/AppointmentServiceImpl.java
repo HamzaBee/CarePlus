@@ -1,4 +1,4 @@
-package org.example.careplus01.serviceImpl;
+package org.example.careplus01.service.serviceImpl;
 
 import lombok.RequiredArgsConstructor;
 import org.example.careplus01.DTO.AppointmentDTO;

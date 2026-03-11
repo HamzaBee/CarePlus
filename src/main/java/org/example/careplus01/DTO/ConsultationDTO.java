@@ -29,7 +29,7 @@ public class ConsultationDTO {
     private BigDecimal fee;
     private boolean paid;
     @NotNull(message = "Appointment ID is required")
-    private UUID appointmentId;
+    private Long appointmentId;
 
 
 
